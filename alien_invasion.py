@@ -54,7 +54,7 @@ class AlienInvasion:
                 self.ship.update()
                 self._update_bullets()
                 self._update_aliens()
-                
+
             self._update_screen()
             self.clock.tick(60)
         
@@ -143,6 +143,7 @@ class AlienInvasion:
 
     def _update_aliens(self):
         """Update the positions of all aliens in the fleet."""
+        """Check if the fleet is at an edge, then update positions."""
         self._check_fleet_edges()
         self.aliens.update()
 
@@ -172,7 +173,7 @@ class AlienInvasion:
         """Drop the entire fleet and change the fleet's direction."""
         for alien in self.aliens.sprites():
             alien.rect.y += self.settings.fleet_drop_speed
-            self.settings.fleet_direction *= -1
+        self.settings.fleet_direction *= -1
 
     def _update_screen(self):
         """Redraw the screen during each pass through the loop."""
